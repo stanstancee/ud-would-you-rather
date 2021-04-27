@@ -7,14 +7,13 @@ import { createStore } from 'redux';
 import reducers from './reducers'
 import middleware from './middleware'
 import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const store = createStore(reducers,middleware)
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
   </Provider>
  ,
   document.getElementById('root')

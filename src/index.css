@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*  question component styling */
+.container-div{
+  background: rgba(18, 63, 105, 0.897);
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+.container-div p{
+  font:900 20px "Lucida Console", "Courier New", monospace;
+  color:#fff;
+  margin: 1em 0;
+}
+.middle-div{
+  background:rgba(240, 243, 245, 0.897) ;
+}
+.middle-div p{
+  color: rgba(18, 63, 105, 0.897);
+  font:  bold 20px Georgia, serif;
+}
+.bottom-div{
+  background: rgba(161, 181, 201, 0.644);
+  display:flex;
+  justify-content: space-between;
+
+
+
+
+}
+
