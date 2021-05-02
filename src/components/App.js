@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  handleInitialData  from '../actions/shared';
+import handleInitialData from '../actions/shared';
 import Home from './Home';
-import QuestionDetails from './QuestionDetails';
+import Login from './Login'
 import LoadingBar from 'react-redux-loading'
+import AddQuestion from './AddQuestion'
 
 
 
@@ -15,16 +16,21 @@ class App extends Component {
   render() {
     return (
       <>
-      <LoadingBar />
-      <div>
+        <LoadingBar />
+        <div>
+          {this.props.loading === true ? <Login /> :<div> <Home /> <AddQuestion />  </div>}
 
-        <Home />
-        <QuestionDetails id="6ni6ok3ym7mf1p33lnez" />
+
         </div>
       </>
 
     );
   }
 }
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    loading: authedUser === null
+  }
 
-export default connect()(App) ;
+}
+export default connect(mapStateToProps)(App);
