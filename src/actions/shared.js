@@ -1,7 +1,8 @@
-import { receiveQuestions } from './questions'
-import { receiveUsers } from './users'
-import {getInitialData} from '../utils/api'
+import { receiveQuestions, addQuestion, addQuestionAnswer } from './questions'
+import { receiveUsers,addQuestionToAuthedUser,addQuestionAnswerToAuthedUser } from './users'
+import {getInitialData,saveQuestion, saveQuestionAnswer} from '../utils/api'
 import {showLoading, hideLoading} from 'react-redux-loading'
+
 
 
 
@@ -15,4 +16,30 @@ export default function handleInitialData() {
             dispatch(hideLoading())
         })
     }
+}
+export function handleAddQuestion(optionOneText, optionTwoText) {
+    return (dispatch, getState) => {
+      const { authedUser } = getState();
+
+      return saveQuestion({
+        author: authedUser,
+        optionOneText,
+        optionTwoText
+      }).then(question => {
+        dispatch(addQuestion(question));
+        dispatch(addQuestionToAuthedUser(authedUser, question.id));
+      });
+    };
+  }
+
+  export function handleAddQuestionAnswer( id, answer) {
+    return (dispatch ,getState) => {
+      const {authedUser} = getState()
+        return saveQuestionAnswer({
+            authedUser, qid:id, answer
+        })
+        .then(dispatch(addQuestionAnswer(authedUser,id,answer)))
+        .then(dispatch(addQuestionAnswerToAuthedUser(authedUser,id,answer)))
+    }
+
 }

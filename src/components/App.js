@@ -4,7 +4,7 @@ import handleInitialData from '../actions/shared';
 import Home from './Home';
 import Login from './Login'
 import LoadingBar from 'react-redux-loading'
-import AddQuestion from './AddQuestion'
+import QuestionDetails from './QuestionDetails'
 
 
 
@@ -18,7 +18,7 @@ class App extends Component {
       <>
         <LoadingBar />
         <div>
-          {this.props.loading === true ? <Login /> :<div> <Home /> <AddQuestion />  </div>}
+          {this.props.loading === true ? <Login /> :<div> <Home /> <QuestionDetails />  </div>}
 
 
         </div>

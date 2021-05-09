@@ -40,7 +40,7 @@ class Questions extends Component {
                     {/*
                 //TODO:  Redirect to question details page
                 */}
-                    <Button variant="info">View Poll</Button>
+                    <Button variant="info" block size="lg">View Poll</Button>
                 </Container>
 
 
