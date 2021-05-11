@@ -48,8 +48,8 @@ code,.container-div h3 {
    .container-div,
    .bottom-div,
    .add-question,
-   .unanswered
-   {
+   .unanswered,
+   td div{
     display: flex;
 
   }
@@ -61,7 +61,7 @@ code,.container-div h3 {
   .bottom-div p{
     flex: 80%;
   }
-  .select-user{
+  .select-user, td div{
     justify-content: space-around;
     width: 30vw;
   }

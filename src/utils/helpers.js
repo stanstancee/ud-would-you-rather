@@ -67,3 +67,13 @@ export function formatVotes(question) {
 
 
 }
+
+export const getBoardValues = (user) => {
+  const answersLength = Object.keys(user.answers).length
+  const questionsLength = user.questions.length
+  return {
+      answersLength,
+      questionsLength,
+      score: answersLength + questionsLength
+  }
+}

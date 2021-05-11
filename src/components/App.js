@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import handleInitialData from '../actions/shared';
-import Home from './Home';
+//import Home from './Home';
 import Login from './Login'
 import LoadingBar from 'react-redux-loading'
-import QuestionDetails from './QuestionDetails'
+//import QuestionDetails from './QuestionDetails'
+import LeaderBoard from './LeaderBoard'
 
 
 
@@ -18,9 +19,7 @@ class App extends Component {
       <>
         <LoadingBar />
         <div>
-          {this.props.loading === true ? <Login /> :<div> <Home /> <QuestionDetails />  </div>}
-
-
+          {this.props.loading === true ? <Login /> :<div>  <LeaderBoard />  </div>}
         </div>
       </>
 
