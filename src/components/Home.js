@@ -24,14 +24,16 @@ class Home extends Component {
                     <Col onClick={() => { this.setState({ toggle: true }) }}>
                         <Button variant={this.state.toggle ? "primary" : "outline-primary"} size="lg" block>Answered</Button>
                     </Col>
+
                 </Row>
                 {this.state.toggle ?
                     <Row>
-                        {unanswered.map(question => <Questions question={question} key={question.id} />)}
+                        {answered.map(question => <Questions question={question} key={question.id} />)}
                     </Row> :
                     <Row>
-                        {answered.map(question => <Questions question={question} key={question.id} />)}
+                        {unanswered.map(question => <Questions question={question} key={question.id} />)}
                     </Row>
+
 
                 }
 
@@ -48,11 +50,9 @@ class Home extends Component {
 
 
 function mapStateToProps({ questions, authedUser }) {
-    let questionsId = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
-
     return {
-        answered: getQuestions("answered", questionsId, questions, authedUser),
-        unanswered: getQuestions("unanswered", questionsId, questions, authedUser)
+        answered: getQuestions("answered", questions, authedUser),
+        unanswered: getQuestions("unanswered", questions, authedUser)
     }
 }
 export default connect(mapStateToProps)(Home);

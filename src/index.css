@@ -16,7 +16,7 @@ code,.container-div h3 {
   color: rgba(18, 63, 105, 0.897);
 
 }
-/*  question component styling */
+
 .container-div{
   background: rgba(18, 63, 105, 0.897);
 
@@ -67,7 +67,7 @@ code,.container-div h3 {
   .bottom-div p{
     flex: 80%;
   }
-  .select-user, td div{
+   td div{
     justify-content: space-around;
     width: 30vw;
   }
@@ -75,7 +75,7 @@ code,.container-div h3 {
     cursor: pointer;
     background: rgba(161, 181, 201, 0.644);
   }
-  .bottom-div{
+  .bottom-div ,.select-user{
     justify-content: space-between;
   }
 

@@ -4,11 +4,6 @@ import { Button, Form } from "react-bootstrap"
 import { handleAddQuestion } from '../actions/shared';
 import { Redirect } from 'react-router-dom'
 
-function mapStateToProps(state) {
-    return {
-
-    };
-}
 
 class AddQuestion extends Component {
     state = {
@@ -83,6 +78,4 @@ class AddQuestion extends Component {
     }
 }
 
-export default connect(
-    mapStateToProps,
-)(AddQuestion);
+export default connect()(AddQuestion);

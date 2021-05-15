@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Image, Button } from "react-bootstrap"
 import avatar from "../icons/icons8-homer-simpson.svg"
 import arrow_drop_down_black_24dp from "../icons/arrow_drop_down_black_24dp.svg"
-import {setAuthedUser} from "../actions/authe_user"
+import {setAuthedUser} from "../actions/authed_user"
 
 
 function mapStateToProps({ users }) {

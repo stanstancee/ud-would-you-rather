@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container,Image,Button } from "react-bootstrap"
-import { setAuthedUser } from '../actions/authe_user';
+import { setAuthedUser } from '../actions/authed_user';
 
 function mapStateToProps({ authedUser,users }) {
     const isLogedIn = authedUser !== null

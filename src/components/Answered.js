@@ -24,7 +24,10 @@ function Answered(props) {
                         {checkVote[index] && <p><small className="text-muted">You voted  this option</small><img alt="like icon" src={thumb} ></img></p>}
 
                         <p>{option} out of {totalVotes} {vote}</p>
-                        <ProgressBar animated now={optionPerc[index]} variant={optionColor[index]} label={`${optionPerc[index].toFixed(0)}%`} />
+                        {optionPerc[index].toFixed(0) < 1 ? <h2>{optionPerc[index].toFixed(0)}% votes</h2> :
+                            <ProgressBar animated now={optionPerc[index]} variant={optionColor[index]} label={`${optionPerc[index].toFixed(0)}%`} />
+                        }
+
 
                     </div>
 

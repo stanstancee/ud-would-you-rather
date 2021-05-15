@@ -2,24 +2,24 @@
  * @function
  * @description This function formats input data to categorise results into two distinct arrays holding  answered and unanswered questions array.
  * @param {string} type
- * @param {array} questionsId
  * @param  {object} questions
  * @param {string} authedUser
  * @returns
  *
  */
 
-export function getQuestions(type, questionsId, questions, authedUser) {
+export function getQuestions(type, questions, authedUser) {
+  let questionsId = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
   let questionList = questionsId.map((question) => questions[question])
   const optionOne = questionList.filter(ele => ele.optionOne.votes.includes(authedUser))
   const optionTwo = questionList.filter(ele => ele.optionTwo.votes.includes(authedUser))
   const id = [...optionOne, ...optionTwo].map(ele => ele.id)
   const idSet = new Set(id);
   switch (type) {
-    case "answered":
-      return questionList.filter((value) => !idSet.has(value.id));
     case "unanswered":
-      return [...optionOne, ...optionTwo]
+      return questionList.filter((value) => !idSet.has(value.id));
+    case "answered":
+      return [...optionOne, ...optionTwo].sort((a, b) => b.timestamp - a.timestamp)
     default:
       return questionList
   }
@@ -44,14 +44,14 @@ export function formatVotes(question) {
 
   function returnColour(type) {
     if (type < 34) {
-      return "danger"
+      return "danger" ;
     }
     else if (type > 34 && type <= 67) {
-      return "warning"
+      return "warning" ;
 
     }
     else {
-      return "success"
+      return "success" ;
     }
 
   }
@@ -72,8 +72,8 @@ export const getBoardValues = (user) => {
   const answersLength = Object.keys(user.answers).length
   const questionsLength = user.questions.length
   return {
-      answersLength,
-      questionsLength,
-      score: answersLength + questionsLength
+    answersLength,
+    questionsLength,
+    score: answersLength + questionsLength
   }
 }
