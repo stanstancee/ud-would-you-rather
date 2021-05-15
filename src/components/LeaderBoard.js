@@ -14,10 +14,9 @@ function mapStateToProps({ users }) {
 class LeaderBoard extends Component {
     render() {
         const { usersData } = this.props
-        console.log(usersData)
         return (
             <div>
-                <Table striped bordered hover variant="dark" fluid>
+                <Table striped bordered hover variant="light" >
                     <thead>
                         <tr>
                             <th colSpan="2" >User</th>

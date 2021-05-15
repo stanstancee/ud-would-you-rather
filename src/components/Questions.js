@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Col, Image, Container, Button } from 'react-bootstrap'
+import {  Link } from 'react-router-dom'
 
 function mapStateToProps({ users }) {
     return {
@@ -12,7 +13,7 @@ function mapStateToProps({ users }) {
 class Questions extends Component {
 
     render() {
-        const { author, optionOne, optionTwo } = this.props.question
+        const { author, optionOne, optionTwo,id } = this.props.question
         const user = this.props.users[author]
 
         return (
@@ -30,17 +31,13 @@ class Questions extends Component {
                     <p>{`...${optionTwo.text.slice(0, 10)}...`}</p>
 
                 </Container>
-
-
                 <Container className="bottom-div">
                     <h4>
                         <small className="text-muted">asked by    </small>
                         {user.name}
                     </h4>
-                    {/*
-                //TODO:  Redirect to question details page
-                */}
-                    <Button variant="info" block size="lg">View Poll</Button>
+
+                    <Link to={`questions/${id}`}><Button variant="info" block size="lg">View Poll</Button></Link>
                 </Container>
 
 

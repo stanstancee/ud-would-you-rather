@@ -5,28 +5,47 @@ import Unanswered from "./Unanswered"
 import Answered from "./Answered"
 import {handleAddQuestionAnswer} from '../actions/shared'
 import { formatVotes } from '../utils/helpers';
-
-function mapStateToProps({ questions, authedUser, users }) {
-    const question = questions['6ni6ok3ym7mf1p33lnez']
-    const checkUthedUserOption1 = question.optionOne.votes.includes(authedUser)
-    const checkUthedUserOption2  = question.optionTwo.votes.includes(authedUser)
-    const checkUthedUserVote = [checkUthedUserOption1,checkUthedUserOption2]
-    const answered = checkUthedUserVote[0] || checkUthedUserVote[1]
+import {Link} from "react-router-dom"
+import Page404 from './Page404'
 
 
 
-    return {
-        answered,
-        question,
-        user: users[question.author],
-        votesObj:formatVotes(question),
-        checkUthedUserVote
+function mapStateToProps({ questions, authedUser, users },ownProps) {
+    const id = ownProps.match.params.id
+    const questionId = new Set(Object.keys(questions))
+    const checkId = questionId.has(id)
+
+
+    if(checkId){
+        const question = questions[id]
+        const checkUthedUserOption1 = question.optionOne.votes.includes(authedUser)
+        const checkUthedUserOption2  = question.optionTwo.votes.includes(authedUser)
+        const checkUthedUserVote = [checkUthedUserOption1,checkUthedUserOption2]
+        const answered = checkUthedUserVote[0] || checkUthedUserVote[1]
+
+
+        return {
+            answered,
+            question,
+            user: users[question.author],
+            votesObj:formatVotes(question),
+            checkUthedUserVote,
 
 
 
 
 
-    };
+
+        };
+
+    }
+    if(!checkId){
+        return{
+            checkId,
+            id
+        }
+    }
+
 }
 
 class QuestionDetails extends Component {
@@ -46,9 +65,14 @@ class QuestionDetails extends Component {
     }
 
     render() {
+        if(this.props.checkId === false){
+            return <Page404 id={this.props.id} />
+
+        }
         const {question, user, answered,question:{author},votesObj,checkUthedUserVote} = this.props
         const {optionOne:{text:text1},optionTwo:{text:text2}}  = question
         const textArray = [text1,text2]
+
 
 
         return (
@@ -72,10 +96,8 @@ class QuestionDetails extends Component {
                     <small className="text-muted">asked by    </small>
                     {user.name}
                 </h4>
-                {/*
-            //TODO:  Redirect to question details page
-            */}
-              { answered?<Button size="lg" variant="info" block>Back to Home Page</Button> :<Button variant="info" size="lg" block disabled = {this.state.option.length < 1} onClick={this.handleSubmit}>Answer</Button>}
+
+              { answered?<Link  to=""><Button size="lg" variant="info" block>Back to Home Page</Button></Link> :<Button variant="info" size="lg" block disabled = {this.state.option.length < 1} onClick={this.handleSubmit}>Answer</Button>}
             </Container>
 
 

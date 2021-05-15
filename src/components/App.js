@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import handleInitialData from '../actions/shared';
-//import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from './Home';
 import Login from './Login'
 import LoadingBar from 'react-redux-loading'
-//import QuestionDetails from './QuestionDetails'
+import QuestionDetails from './QuestionDetails'
 import LeaderBoard from './LeaderBoard'
+import AddQuestion from "./AddQuestion"
+import Navigation from './Nav'
+import Page404 from './Page404'
+
 
 
 
@@ -16,19 +21,37 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <LoadingBar />
-        <div>
-          {this.props.loading === true ? <Login /> :<div>  <LeaderBoard />  </div>}
-        </div>
-      </>
+      <Router>
+        <>
+          <LoadingBar />
+          <Navigation />
+          <>
+
+              {this.props.notLogedIn ? <Login /> :
+                <div>
+                  <Switch>
+                  
+                    <Route path='/' exact component={Home} />
+                    <Route path='/questions/:id' exact component={QuestionDetails} />
+                    <Route path='/leaderboard' exact component={LeaderBoard} />
+                    <Route path='/add' exact component={AddQuestion} />
+
+                  <Route component={Page404} />
+                  </Switch>
+                </div>
+
+              }
+
+          </>
+        </>
+      </Router>
 
     );
   }
 }
 const mapStateToProps = ({ authedUser }) => {
   return {
-    loading: authedUser === null
+    notLogedIn: authedUser === null
   }
 
 }

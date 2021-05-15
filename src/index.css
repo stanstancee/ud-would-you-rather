@@ -11,6 +11,11 @@ code,.container-div h3 {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.link{
+  padding:1em;
+  color: rgba(18, 63, 105, 0.897);
+
+}
 /*  question component styling */
 .container-div{
   background: rgba(18, 63, 105, 0.897);
@@ -32,7 +37,7 @@ code,.container-div h3 {
 .middle-div{
   background:rgba(240, 243, 245, 0.897) ;
 }
-.middle-div p{
+.middle-div p, .log-out div, .log-out p{
   color: rgba(18, 63, 105, 0.897);
   font:  bold 20px Georgia, serif;
 }
@@ -44,6 +49,7 @@ code,.container-div h3 {
   /*Login Component  */
 
    .login,
+   .log-out,
    .select-user,
    .container-div,
    .bottom-div,
@@ -65,17 +71,22 @@ code,.container-div h3 {
     justify-content: space-around;
     width: 30vw;
   }
-  .select:hover{
+  .select:hover, .log-out p:hover  ,.link:hover{
     cursor: pointer;
     background: rgba(161, 181, 201, 0.644);
   }
+  .bottom-div{
+    justify-content: space-between;
+  }
+
 /* add question component*/
 .add-question div,
  .add-question h1{
    width: 80vw;
 
 }
-/* question details */
+
+
 
 
 

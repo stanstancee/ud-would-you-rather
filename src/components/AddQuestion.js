@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Form } from "react-bootstrap"
 import { handleAddQuestion } from '../actions/shared';
+import { Redirect } from 'react-router-dom'
 
 function mapStateToProps(state) {
     return {
@@ -11,12 +12,16 @@ function mapStateToProps(state) {
 
 class AddQuestion extends Component {
     state = {
-        optionOne: "",
-        optionTwo: ""
+      option : { optionOne: "",
+        optionTwo: ""},
+        toHome:false
+
+
     }
 
     setButtonAttr = () => {
-        const { optionOne, optionTwo } = this.state;
+        const {option} = this.state
+        const { optionOne, optionTwo } = option;
         return optionOne && optionTwo
 
     }
@@ -24,22 +29,37 @@ class AddQuestion extends Component {
         const value = e.target.value
         this.setState(prev => {
             return {
-                ...prev,
-                [e.target.name]: value
-            }
+                ...prev, option:{
+                    ...prev.option,
+                    [e.target.name]: value
+                }
+                }
+
         })
 
     }
     handleSubmit = (e) => {
         const { dispatch } = this.props
-        const { optionOne, optionTwo } = this.state
+        const {option} = this.state
+        const { optionOne, optionTwo } = option;
 
         e.preventDefault()
         dispatch(handleAddQuestion(optionOne, optionTwo))
+        this.setState( {
+            option : { optionOne: "",
+              optionTwo: ""},
+              toHome:true
+
+
+          })
+
 
     }
 
     render() {
+        if (this.state.toHome) {
+            return <Redirect to='/' />
+          }
         return (
             <div className="add-question">
                 <h2>Add a Question</h2>
