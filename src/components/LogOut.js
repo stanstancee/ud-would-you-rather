@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container,Image,Button } from "react-bootstrap"
@@ -11,6 +12,7 @@ function mapStateToProps({ authedUser,users }) {
         isLogedIn
     };
 }
+
 
 class LogOut extends Component {
 

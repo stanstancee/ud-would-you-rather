@@ -6,18 +6,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+h1,h2,h3,h4,h5,h6{
+  text-transform: capitalize;
+}
 
 code,.container-div h3 {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.link{
+.link ,.answered h4{
   padding:1em;
   color: rgba(18, 63, 105, 0.897);
 
 }
 
-.container-div{
+.container-div {
   background: rgba(18, 63, 105, 0.897);
 
 }
@@ -37,12 +40,11 @@ code,.container-div h3 {
 .middle-div{
   background:rgba(240, 243, 245, 0.897) ;
 }
-.middle-div p, .log-out div, .log-out p{
+.middle-div p, .log-out div, .log-out p, .add-question h2{
   color: rgba(18, 63, 105, 0.897);
   font:  bold 20px Georgia, serif;
 }
-.bottom-div,
-.add-question form
+.bottom-div
 {
   background: rgba(161, 181, 201, 0.644);
 }
@@ -55,14 +57,32 @@ code,.container-div h3 {
    .bottom-div,
    .add-question,
    .unanswered,
-   td div{
+   .answered,
+   .unanswered > div >*,
+   td div,
+   .login-img
+   {
     display: flex;
 
   }
-  .login,.container-div,.add-question{
+  .login,.container-div,.add-question , .answered{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+ .login {
+   width: 70vw;
+   margin: 5vh auto;
+ }
+ .login >*{
+   width: 100%;
+   margin: 10px 0;
+ }
+ .login-img{
+   justify-content: center;
+ }
+  .add-question{
+    margin: 10vh auto;
   }
   .bottom-div p{
     flex: 80%;
@@ -75,9 +95,7 @@ code,.container-div h3 {
     cursor: pointer;
     background: rgba(161, 181, 201, 0.644);
   }
-  .bottom-div ,.select-user{
-    justify-content: space-between;
-  }
+
 
 /* add question component*/
 .add-question div,
@@ -85,6 +103,33 @@ code,.container-div h3 {
    width: 80vw;
 
 }
+.unanswered, .bottom-div, .select-user {
+  justify-content:space-between;
+  align-items: center;
+}
+.bottom-div, .select-user{
+  font-weight:600;
+  font-size: 16px;
+}
+.answered{
+  width: 70%;
+  margin: 20px auto;
+  background: rgba(161, 181, 201, 0.644);
+  border-radius: 20px;
+  box-shadow: 2px 10px 10px 10px rgb(240, 241, 241) ;
+
+}
+.answered > *{
+  width:100%;
+  text-align: center;
+
+}
+.answered p{
+  color: #fff;
+
+}
+
+
 
 
 

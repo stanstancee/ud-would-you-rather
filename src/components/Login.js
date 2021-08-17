@@ -60,11 +60,11 @@ class Login extends Component {
                         <h3>Welcome to the Would You Rather Poll Game</h3>
                         <p>Please Sign in to continue</p>
                     </div>
-                    <div>
+                    <div className="login-img">
                         <Image src={avatar} alt="avatar" roundedCircle fluid style={{ height: "30vh", border: "4px solid #fff" }} />
                     </div>
-                    <div className="container-div middle-div" >
-                        <div className="bottom-div" style={{ width: "50vw" }}>
+                    <div >
+                        <div className="bottom-div">
                             <p><span className="text-muted" style={{ padding: "1rem" }}>Sign In as</span> {this.state.userName ? this.state.userName : id} </p>
                             <Image onClick={this.toggleOpen} className="select" src={arrow_drop_down_black_24dp} alt="avatar" roundedCircle fluid style={{ height: "7vh", border: "4px solid #fff", float: "right" }} />
 
@@ -84,7 +84,7 @@ class Login extends Component {
 
                     </div>
 
-                    <div style={{ width: "50vw" }}>
+                    <div>
                         <Button variant="success" size="lg" block onClick={this.handleAuth}>Continue</Button>
                     </div>
                 </div>

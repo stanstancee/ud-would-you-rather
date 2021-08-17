@@ -18,11 +18,12 @@ function Answered(props) {
         <div style={{ width: "80vw" }}>
             {optionVotesLength.map((option, index) => {
                 return (
-                    <div key={index} style={{ margin: "10vh", border: "2px solid rgba(18, 63, 105, 0.897)" }}>
+                    <div key={index} className="answered">
+                        <div>
 
-                        <h4 className="text">{text[index]}</h4>
-                        {checkVote[index] && <p><small className="text-muted">You voted  this option</small><img alt="like icon" src={thumb} ></img></p>}
-
+                            <h4 className="text">{text[index]}</h4>
+                            {checkVote[index] && <p><small className="text-muted">You voted  this option</small><img alt="like icon" src={thumb} ></img></p>}
+                        </div>
                         <p>{option} out of {totalVotes} {vote}</p>
                         {optionPerc[index].toFixed(0) < 1 ? <h2>{optionPerc[index].toFixed(0)}% votes</h2> :
                             <ProgressBar animated now={optionPerc[index]} variant={optionColor[index]} label={`${optionPerc[index].toFixed(0)}%`} />
